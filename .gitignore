@@ -52,3 +52,5 @@ MANIFEST
 cdm6.sqlite
 *.sav
 *.csv
+*.fth
+.env
