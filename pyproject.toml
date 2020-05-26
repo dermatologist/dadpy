@@ -1,8 +1,14 @@
 [tool.poetry]
 name = "dadpy"
 version = "0.1.0"
-description = ""
+description = "The swiss army knife of discharge abstract database"
 authors = ["Bell Eapen <github_public@gulfdoctor.net>"]
+
+readme = 'README.md'  # Markdown files are supported
+
+repository = "https://github.com/E-Health/dadpy"
+homepage = "https://github.com/E-Health/dadpy"
+
 
 [tool.poetry.dependencies]
 python = "^3.7"
