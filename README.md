@@ -1,10 +1,10 @@
 # DADpy
 
-The swiss army knife of discharge abstract database
+The swiss army knife of discharge abstract database!
 
 ## About
 
-DADpy provides some easy functions for using the DAD dataset for machine learning and visualization. The package does not include the dataset. Academic researchers can request the DAD dataset from [CIHI](https://www.cihi.ca/en/discharge-abstract-database-metadata).
+DADpy provides a set of functions for using the DAD dataset for machine learning and visualization. The package does not include the dataset. Academic researchers can request the DAD dataset from [CIHI](https://www.cihi.ca/en/discharge-abstract-database-metadata). This is an unofficial repo, and I'm not affiliated with CIHI. Please retain the disclaimer below in forks.
 
 ## Installation
 
@@ -35,6 +35,11 @@ print(dr.interventions('1NF80')) # Partial gastrectomy for repair of gastric div
 dr.vector(dr.has_diagnosis('E66'), significant_chars=3, include_treatments=True)
 
 ```
+
+## Development
+
+* We use [poetry](https://python-poetry.org/).
+* PR welcome. Please see CONTRIBUTING.md
 
 ### Disclaimer
 
