@@ -13,11 +13,11 @@ def dad_fixture():
     return DadLoad
 
 def test_load_sample(dad_fixture, capsys):
-    dl = dad_fixture(os.getenv("DAD_PATH"), "dad201617c")
+    dl = dad_fixture(os.getenv("DAD_PATH"))
     print(dl.sample.head(5))
     assert dl is not None
 
 def test_load_count(dad_fixture, capsys):
-    dl = dad_fixture(os.getenv("DAD_PATH"), "dad201617c")
+    dl = dad_fixture(os.getenv("DAD_PATH"))
     print(dl.count)
     assert dl.count > 100

@@ -18,7 +18,8 @@ pip install dadpy
 from dadpy import DadLoad
 from dadpy import DadRead
 
-dl = DadLoad('/path/to/dad/sample/spss/sav/file/', "dad201617c") # version 
+# with the trailing slash
+dl = DadLoad('/path/to/dad/sample/spss/sav/file/') # clin_sample_spss.sav
 dr = dad_read(dl.sample)
 
 # records with obesity as pandas df
