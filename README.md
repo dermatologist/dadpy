@@ -9,7 +9,8 @@ DADpy provides a set of functions for using the DAD dataset for machine learning
 ## Installation
 
 ```
-pip install dadpy
+
+pip install https://github.com/E-Health/dadpy/releases/download/1.0.0/dadpy-1.0.0-py3-none-any.whl
 ```
 
 ## Usage
