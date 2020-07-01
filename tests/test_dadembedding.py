@@ -23,4 +23,5 @@ def test_embedding(dad_fixture, dad_embedding, capsys):
     dl = dad_fixture(os.getenv("DAD_PATH"))
     de = dad_embedding(dl.sample)
     print(de.embedding()) # 
+    assert len(de.embedding().most_similar_cosmul(['J90'])) > 0
     # assert len(de.list_embed()) > 100

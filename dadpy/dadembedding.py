@@ -1,6 +1,8 @@
 import pandas as pd 
 import numpy as np
 from gensim.models import Word2Vec
+import tempfile
+import os
 
 class DadEmbedding(object):
 
@@ -8,6 +10,7 @@ class DadEmbedding(object):
         self._df = df
         self._df['morbidities'] = self._df[['D_I10_{}'.format(i) for i in range(1, 25)]].values.tolist()
         self._df['interventions'] = self._df[['I_CCI_{}'.format(i) for i in range(1, 20)]].values.tolist()
+        self.model_directory = tempfile.gettempdir()
 
     def list_embed(self):
         self._df = self._df.applymap(lambda x: self.list_filter(x))
@@ -31,20 +34,17 @@ class DadEmbedding(object):
         else:
             return str_list
 
-    def embedding(self, size=100, window=5, min_count=2, workers=4):
-        # define training data
-        sentences = self.list_embed()
-        # train model
-        model = Word2Vec(sentences, size=size, window=window, min_count=min_count, workers=workers)
-        # summarize the loaded model
-        print(model)
-        # summarize vocabulary
-        words = list(model.wv.vocab)
-        print(words)
-        # access vector for one word
-        print(model['Z515'])
-        # save model
-        model.save('/tmp/model.bin')
-        # load model
-        new_model = Word2Vec.load('/tmp/model.bin')
-        print(new_model)
+    def embedding(self, size=100, window=5, min_count=2, workers=1):
+
+        # https://machinelearningmastery.com/develop-word-embeddings-python-gensim/
+        model_exists = os.path.exists(os.path.join(self.model_directory, 'dadembed_gensim.bin'))
+
+        if model_exists is not True:
+            # define training data
+            sentences = self.list_embed()
+            # train model
+            model = Word2Vec(sentences, size=size, window=window, min_count=min_count, workers=workers)
+            # save model
+            model.save(os.path.join(self.model_directory, 'dadembed_gensim.bin'))
+
+        return Word2Vec.load(os.path.join(self.model_directory, 'dadembed_gensim.bin'))
