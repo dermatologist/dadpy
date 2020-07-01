@@ -21,7 +21,8 @@ from dadpy import DadRead
 
 # with the trailing slash
 dl = DadLoad('/path/to/dad/sample/spss/sav/file/') # clin_sample_spss.sav
-dr = dad_read(dl.sample)
+dr = DadRead(dl.sample)
+de = DadEmbedding(dl.sample)
 
 # records with obesity as pandas df
 print(dr.has_diagnosis('E66'))
@@ -35,6 +36,9 @@ print(dr.interventions('1NF80')) # Partial gastrectomy for repair of gastric div
 
 # Get the one-hot-encoded vector for machine learning
 dr.vector(dr.has_diagnosis('E66'), significant_chars=3, include_treatments=True)
+
+# Play with embeddings
+print(de.embedding().most_similar_cosmul(['J90'])) #neighbours of 'pleural effusion' -> E877 Fluid overload.
 
 ```
 
