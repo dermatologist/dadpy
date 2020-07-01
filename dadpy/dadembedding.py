@@ -1,5 +1,6 @@
 import pandas as pd 
 import numpy as np
+from gensim.models import Word2Vec
 
 class DadEmbedding(object):
 
@@ -29,3 +30,21 @@ class DadEmbedding(object):
             return [item for sublist in str_list for item in sublist]
         else:
             return str_list
+
+    def embedding(self, size=100, window=5, min_count=2, workers=4, epochs=1):
+        # define training data
+        sentences = self.list_embed()
+        # train model
+        model = Word2Vec(sentences, size=size, window=window, min_count=min_count, workers=workers, epochs=epochs)
+        # summarize the loaded model
+        print(model)
+        # summarize vocabulary
+        words = list(model.wv.vocab)
+        print(words)
+        # access vector for one word
+        print(model['Z515'])
+        # save model
+        model.save('/tmp/model.bin')
+        # load model
+        new_model = Word2Vec.load('/tmp/model.bin')
+        print(new_model)
