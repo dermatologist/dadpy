@@ -18,6 +18,7 @@ pip install https://github.com/E-Health/dadpy/releases/download/1.0.0/dadpy-1.0.
 ```
 from dadpy import DadLoad
 from dadpy import DadRead
+from dadpy import DadEmbedding
 
 # with the trailing slash
 dl = DadLoad('/path/to/dad/sample/spss/sav/file/') # clin_sample_spss.sav
