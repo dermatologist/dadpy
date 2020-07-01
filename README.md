@@ -43,6 +43,8 @@ print(de.embedding().most_similar_cosmul(['J90'])) #neighbours of 'pleural effus
 
 ```
 
+* See notebooks folder for visualizations
+
 ## Development
 
 * We use [poetry](https://python-poetry.org/).
