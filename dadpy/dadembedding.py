@@ -31,11 +31,11 @@ class DadEmbedding(object):
         else:
             return str_list
 
-    def embedding(self, size=100, window=5, min_count=2, workers=4, epochs=1):
+    def embedding(self, size=100, window=5, min_count=2, workers=4):
         # define training data
         sentences = self.list_embed()
         # train model
-        model = Word2Vec(sentences, size=size, window=window, min_count=min_count, workers=workers, epochs=epochs)
+        model = Word2Vec(sentences, size=size, window=window, min_count=min_count, workers=workers)
         # summarize the loaded model
         print(model)
         # summarize vocabulary
