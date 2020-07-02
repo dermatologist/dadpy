@@ -43,6 +43,8 @@ print(de.embedding().most_similar_cosmul(['J90'])) #neighbours of 'pleural effus
 
 ```
 
+* See notebooks folder for visualizations
+
 ## Development
 
 * We use [poetry](https://python-poetry.org/).
@@ -57,3 +59,7 @@ Parts of this material are based on the Canadian Institute for Health Informatio
 ## Author(s)
 
 * [Bell Eapen](https://nuchange.ca)
+
+## See Also
+
+* [Dadage: Reinforcement Learning env based on Discharge Abstract Database](https://github.com/dermatologist/dad-gym-env)
