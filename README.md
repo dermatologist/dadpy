@@ -1,6 +1,6 @@
 # DADpy
 
-The swiss army knife for discharge abstract database!
+The swiss army :knife: for discharge abstract database!
 
 ## About
 
