@@ -16,8 +16,8 @@ pyarrow = "^0.17.1"
 pyreadstat = "^0.3.4"
 sklearn = "^0.0"
 pandas = "^1.0.3"
-numpy = "^1.18.4"
-gensim = "^3.8.3"
+numpy = "^1.21.1"
+gensim = "^4.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
