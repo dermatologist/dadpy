@@ -1,11 +1,8 @@
-from dadpy import __version__
 from dotenv import load_dotenv
 load_dotenv()
 import os
 import pytest
 
-def test_version():
-    assert __version__ == '0.1.0'
 
 @pytest.fixture
 def dad_fixture():

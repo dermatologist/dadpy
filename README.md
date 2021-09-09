@@ -9,8 +9,9 @@ DADpy provides a set of functions for using the DAD dataset for machine learning
 ## Installation
 
 ```
-
-pip install https://github.com/E-Health/dadpy/releases/download/1.0.0/dadpy-1.0.0-py3-none-any.whl
+git clone https://github.com/dermatologist/dadpy.git
+cd dadpy
+pip install -e .
 ```
 
 ## Usage
@@ -28,7 +29,7 @@ de = DadEmbedding(dl.sample)
 # records with obesity as pandas df
 print(dr.has_diagnosis('E66'))
 # Partial gastrectomy for repair of gastric diverticulum
-print(dr.has_treatment('1NF80')) 
+print(dr.has_treatment('1NF80'))
 
 # comorbidities as dict for visualization
 print(dr.comorbidity('E66')) # Obesity
@@ -39,7 +40,7 @@ print(dr.interventions('1NF80')) # Partial gastrectomy for repair of gastric div
 dr.vector(dr.has_diagnosis('E66'), significant_chars=3, include_treatments=True)
 
 # Play with embeddings
-print(de.embedding().most_similar_cosmul(['J90'])) #neighbours of 'pleural effusion' -> E877 Fluid overload.
+print(de.embedding().wv.most_similar_cosmul(['J90'])) #neighbours of 'pleural effusion' -> E877 Fluid overload.
 
 ```
 
