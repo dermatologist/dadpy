@@ -17,7 +17,9 @@ class DadLoad(object):
         if self._filepath.endswith('.sav'):
             self._dfs = pd.read_spss(self._filepath)
         else:
-            self._dfs = pd.read_csv(self._filepath)
+            self._dfs = pd.read_csv(self._filepath, dtype='str',
+                                    converters={'ACT_LCAT': float, 'TLOS_CAT': float, 'ALC_LCAT': float})
+            self._dfs = self._dfs.fillna(" ")
 
     @property
     def sample(self):

@@ -1,8 +1,5 @@
-from dotenv import load_dotenv
-load_dotenv()
-import os
+from pkg_resources import resource_filename
 import pytest
-
 
 @pytest.fixture
 def dad_fixture():
@@ -10,11 +7,11 @@ def dad_fixture():
     return DadLoad
 
 def test_load_sample(dad_fixture, capsys):
-    dl = dad_fixture(os.getenv("DAD_PATH"))
+    dl = dad_fixture(resource_filename('src.dadpy.resources', 'dadpy-test.csv'))
     print(dl.sample.head(5))
     assert dl is not None
 
 def test_load_count(dad_fixture, capsys):
-    dl = dad_fixture(os.getenv("DAD_PATH"))
+    dl = dad_fixture(resource_filename('src.dadpy.resources', 'dadpy-test.csv'))
     print(dl.count)
-    assert dl.count > 100
+    assert dl.count > 1
