@@ -48,9 +48,7 @@ print(de.embedding().wv.most_similar_cosmul(['J90'])) #neighbours of 'pleural ef
 
 ## Development
 
-* We use [poetry](https://python-poetry.org/).
 * PR welcome. Please see CONTRIBUTING.md
-* rename .env.example to .env and add path for tests to run
 * Add jupiter notebooks to the notebook folder. Include the disclaimer below.
 
 ### Disclaimer
