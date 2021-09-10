@@ -4,7 +4,7 @@ The swiss army :knife: for discharge abstract database!
 
 ## About
 
-DADpy provides a set of functions for using the DAD dataset for machine learning and visualization. The package does not include the dataset. Academic researchers can request the DAD dataset from CIHI. This is an unofficial repo, and I'm not affiliated with CIHI. Please retain the disclaimer below in forks.
+DADpy provides a set of functions for using the DAD dataset for machine learning and visualization. The package does not include the dataset. Academic researchers can request the DAD dataset from CIHI. This is an unofficial repo and is not affiliated with CIHI. Please retain the disclaimer below in forks.
 
 ## Installation
 
@@ -21,7 +21,7 @@ from dadpy import DadLoad
 from dadpy import DadRead
 from dadpy import DadEmbedding
 
-# with the trailing slash
+# csv file is also supported
 dl = DadLoad('/path/to/dad/sample/spss/sav/file/clin_sample_spss.sav')
 dr = DadRead(dl.sample)
 de = DadEmbedding(dl.sample)
