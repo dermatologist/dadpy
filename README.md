@@ -22,7 +22,7 @@ from dadpy import DadRead
 from dadpy import DadEmbedding
 
 # with the trailing slash
-dl = DadLoad('/path/to/dad/sample/spss/sav/file/') # clin_sample_spss.sav
+dl = DadLoad('/path/to/dad/sample/spss/sav/file/clin_sample_spss.sav')
 dr = DadRead(dl.sample)
 de = DadEmbedding(dl.sample)
 

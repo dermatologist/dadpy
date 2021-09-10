@@ -8,17 +8,16 @@ class DadLoad(object):
         filepath {str} -- [path to the downloaded files]
         version {str} -- [Ex: dad201617c]
     """
-    def __init__ (self, filepath: str, filename: str = "clin_sample_spss.sav"):
+    def __init__ (self, filepath: str):
 
         self._filepath = filepath
-        self._filename = filename
         self.read_sample()
 
     def read_sample(self):
-        if self._filename.endswith('.sav'):
-            self._dfs = pd.read_spss(self._filepath + self._filename)
+        if self._filepath.endswith('.sav'):
+            self._dfs = pd.read_spss(self._filepath)
         else:
-            self._dfs = pd.read_csv(self._filepath + self._filename)
+            self._dfs = pd.read_csv(self._filepath)
 
     @property
     def sample(self):
