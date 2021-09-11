@@ -1,23 +1,17 @@
-from dadpy import __version__
-from dotenv import load_dotenv
-load_dotenv()
-import os
+from pkg_resources import resource_filename
 import pytest
-
-def test_version():
-    assert __version__ == '0.1.0'
 
 @pytest.fixture
 def dad_fixture():
-    from dadpy.dadload import DadLoad
+    from src.dadpy.dadload import DadLoad
     return DadLoad
 
 def test_load_sample(dad_fixture, capsys):
-    dl = dad_fixture(os.getenv("DAD_PATH"))
+    dl = dad_fixture(resource_filename('src.dadpy.resources', 'dadpy-test.csv'))
     print(dl.sample.head(5))
     assert dl is not None
 
 def test_load_count(dad_fixture, capsys):
-    dl = dad_fixture(os.getenv("DAD_PATH"))
+    dl = dad_fixture(resource_filename('src.dadpy.resources', 'dadpy-test.csv'))
     print(dl.count)
-    assert dl.count > 100
+    assert dl.count > 1

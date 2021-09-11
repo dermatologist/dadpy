@@ -1,4 +1,4 @@
-import pandas as pd 
+import pandas as pd
 import os.path
 
 class DadLoad(object):
@@ -14,7 +14,12 @@ class DadLoad(object):
         self.read_sample()
 
     def read_sample(self):
-        self._dfs = pd.read_spss(self._filepath + "clin_sample_spss.sav")
+        if self._filepath.endswith('.sav'):
+            self._dfs = pd.read_spss(self._filepath)
+        else:
+            self._dfs = pd.read_csv(self._filepath, dtype='str',
+                                    converters={'ACT_LCAT': float, 'TLOS_CAT': float, 'ALC_LCAT': float})
+            self._dfs = self._dfs.fillna(" ")
 
     @property
     def sample(self):
@@ -28,4 +33,3 @@ class DadLoad(object):
     def count(self):
         index = self._dfs.index
         return len(index)
-        
