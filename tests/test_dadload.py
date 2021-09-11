@@ -3,7 +3,7 @@ import pytest
 
 @pytest.fixture
 def dad_fixture():
-    from dadpy.dadload import DadLoad
+    from src.dadpy.dadload import DadLoad
     return DadLoad
 
 def test_load_sample(dad_fixture, capsys):

@@ -4,13 +4,13 @@ from pkg_resources import resource_filename
 
 @pytest.fixture
 def dad_fixture():
-    from dadpy.dadload import DadLoad
+    from src.dadpy.dadload import DadLoad
     return DadLoad
 
 
 @pytest.fixture
 def dad_read():
-    from dadpy.dadread import DadRead
+    from src.dadpy.dadread import DadRead
     return DadRead
 
 
