@@ -4,7 +4,7 @@ The swiss army :knife: for discharge abstract database!
 
 ## About
 
-DADpy provides a set of functions for using the DAD dataset for machine learning and visualization. The package does not include the dataset. Academic researchers can request the DAD dataset from CIHI. This is an unofficial repo and is not affiliated with CIHI. Please retain the disclaimer below in forks.
+DADpy provides a set of functions for using the DAD dataset for machine learning and visualization. The package does not include the dataset. Academic researchers can request the DAD dataset from CIHI. This is an unofficial repo and is not affiliated with CIHI. Please retain the disclaimer below in forks. [Read docs](https://dermatologist.github.io/dadpy/)
 
 ## Installation
 
