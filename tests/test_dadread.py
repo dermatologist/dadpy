@@ -15,14 +15,14 @@ def dad_read():
 
 
 def test_read_diagnosis(dad_fixture, dad_read, capsys):
-    dl = dad_fixture(resource_filename('src.dadpy.resources', 'dadpy-test.csv'))
+    dl = dad_fixture(resource_filename('tests.resources', 'dadpy-test.csv'))
     dr = dad_read(dl.sample)
     print(dr.has_diagnosis('ZZ'))  # Obesity
     assert dr.count(dr.has_diagnosis('ZZ')) > 1
 
 
 def test_read_treatment(dad_fixture, dad_read, capsys):
-    dl = dad_fixture(resource_filename('src.dadpy.resources', 'dadpy-test.csv'))
+    dl = dad_fixture(resource_filename('tests.resources', 'dadpy-test.csv'))
     dr = dad_read(dl.sample)
     # Partial gastrectomy for repair of gastric diverticulum
     print(dr.has_treatment('1Z'))
@@ -30,19 +30,19 @@ def test_read_treatment(dad_fixture, dad_read, capsys):
 
 
 def test_read_comorbidity(dad_fixture, dad_read, capsys):
-    dl = dad_fixture(resource_filename('src.dadpy.resources', 'dadpy-test.csv'))
+    dl = dad_fixture(resource_filename('tests.resources', 'dadpy-test.csv'))
     dr = dad_read(dl.sample)
     print(dr.comorbidity('ZZ'))  # Obesity
 
 
 def test_read_interventions(dad_fixture, dad_read, capsys):
-    dl = dad_fixture(resource_filename('src.dadpy.resources', 'dadpy-test.csv'))
+    dl = dad_fixture(resource_filename('tests.resources', 'dadpy-test.csv'))
     dr = dad_read(dl.sample)
     # Partial gastrectomy for repair of gastric diverticulum
     print(dr.interventions('1Z'))
 
 
 def test_read_vector(dad_fixture, dad_read, capsys):
-    dl = dad_fixture(resource_filename('src.dadpy.resources', 'dadpy-test.csv'))
+    dl = dad_fixture(resource_filename('tests.resources', 'dadpy-test.csv'))
     dr = dad_read(dl.sample)
     print(dr.vector(dr.has_diagnosis('ZZ'), include_treatments=True))  # Obesity
