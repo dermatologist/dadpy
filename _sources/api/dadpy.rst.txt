@@ -1,0 +1,37 @@
+dadpy package
+=============
+
+Submodules
+----------
+
+dadpy.dadembedding module
+-------------------------
+
+.. automodule:: dadpy.dadembedding
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dadpy.dadload module
+--------------------
+
+.. automodule:: dadpy.dadload
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dadpy.dadread module
+--------------------
+
+.. automodule:: dadpy.dadread
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: dadpy
+   :members:
+   :undoc-members:
+   :show-inheritance:

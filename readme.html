@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>DADpy &#8212; dadpy unknown documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="dadpy" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dadpy">
+<h1>DADpy<a class="headerlink" href="#dadpy" title="Permalink to this headline">¶</a></h1>
+<p>The swiss army :knife: for discharge abstract database!</p>
+<section id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<p>DADpy provides a set of functions for using the DAD dataset for machine learning and visualization. The package does not include the dataset. Academic researchers can request the DAD dataset from CIHI. This is an unofficial repo and is not affiliated with CIHI. Please retain the disclaimer below in forks.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dermatologist</span><span class="o">/</span><span class="n">dadpy</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">dadpy</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dadpy</span> <span class="kn">import</span> <span class="n">DadLoad</span>
+<span class="kn">from</span> <span class="nn">dadpy</span> <span class="kn">import</span> <span class="n">DadRead</span>
+<span class="kn">from</span> <span class="nn">dadpy</span> <span class="kn">import</span> <span class="n">DadEmbedding</span>
+
+<span class="c1"># csv file is also supported</span>
+<span class="n">dl</span> <span class="o">=</span> <span class="n">DadLoad</span><span class="p">(</span><span class="s1">&#39;/path/to/dad/sample/spss/sav/file/clin_sample_spss.sav&#39;</span><span class="p">)</span>
+<span class="n">dr</span> <span class="o">=</span> <span class="n">DadRead</span><span class="p">(</span><span class="n">dl</span><span class="o">.</span><span class="n">sample</span><span class="p">)</span>
+<span class="n">de</span> <span class="o">=</span> <span class="n">DadEmbedding</span><span class="p">(</span><span class="n">dl</span><span class="o">.</span><span class="n">sample</span><span class="p">)</span>
+
+<span class="c1"># records with obesity as pandas df</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dr</span><span class="o">.</span><span class="n">has_diagnosis</span><span class="p">(</span><span class="s1">&#39;E66&#39;</span><span class="p">))</span>
+<span class="c1"># Partial gastrectomy for repair of gastric diverticulum</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dr</span><span class="o">.</span><span class="n">has_treatment</span><span class="p">(</span><span class="s1">&#39;1NF80&#39;</span><span class="p">))</span>
+
+<span class="c1"># comorbidities as dict for visualization</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dr</span><span class="o">.</span><span class="n">comorbidity</span><span class="p">(</span><span class="s1">&#39;E66&#39;</span><span class="p">))</span> <span class="c1"># Obesity</span>
+<span class="c1"># co-occurance of treatments as dict</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dr</span><span class="o">.</span><span class="n">interventions</span><span class="p">(</span><span class="s1">&#39;1NF80&#39;</span><span class="p">))</span> <span class="c1"># Partial gastrectomy for repair of gastric diverticulum</span>
+
+<span class="c1"># Get the one-hot-encoded vector for machine learning</span>
+<span class="n">dr</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">dr</span><span class="o">.</span><span class="n">has_diagnosis</span><span class="p">(</span><span class="s1">&#39;E66&#39;</span><span class="p">),</span> <span class="n">significant_chars</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">include_treatments</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Play with embeddings</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">embedding</span><span class="p">()</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">([</span><span class="s1">&#39;J90&#39;</span><span class="p">]))</span> <span class="c1">#neighbours of &#39;pleural effusion&#39; -&gt; E877 Fluid overload.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>See notebooks folder for visualizations</p></li>
+</ul>
+</section>
+<section id="development">
+<h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>PR welcome. Please see CONTRIBUTING.md</p></li>
+<li><p>Add jupiter notebooks to the notebook folder. Include the disclaimer below.</p></li>
+</ul>
+<section id="disclaimer">
+<h3>Disclaimer<a class="headerlink" href="#disclaimer" title="Permalink to this headline">¶</a></h3>
+<p>Parts of this material are based on the Canadian Institute for Health Information Discharge Abstract Database Research Analytic Files (sampled from fiscal years 2016-17). However the analysis, conclusions, opinions and statements expressed herein are those of the author(s) and not those of the Canadian Institute for Health Information.</p>
+</section>
+</section>
+<section id="author-s">
+<h2>Author(s)<a class="headerlink" href="#author-s" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nuchange.ca">Bell Eapen</a></p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/dermatologist/dad-gym-env">Dadage: Reinforcement Learning env based on Discharge Abstract Database</a></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">dadpy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#author-s">Author(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">Module Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">dadpy</a></li>
+      <li>Next: <a href="license.html" title="next chapter">License</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Bell Eapen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/readme.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
