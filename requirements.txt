@@ -4,7 +4,7 @@
 #
 #    pip-compile
 #
-gensim==4.1.0
+gensim==4.1.2
     # via dadpy (setup.py)
 joblib==1.0.1
     # via scikit-learn
