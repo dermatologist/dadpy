@@ -40,5 +40,5 @@ sklearn==0.0
     # via dadpy (setup.py)
 smart-open==5.2.1
     # via gensim
-threadpoolctl==2.2.0
+threadpoolctl==3.0.0
     # via scikit-learn
