@@ -16,7 +16,7 @@ numpy==1.21.2
     #   pyarrow
     #   scikit-learn
     #   scipy
-pandas==1.3.3
+pandas==1.3.4
     # via
     #   dadpy (setup.py)
     #   pyreadstat
