@@ -38,7 +38,7 @@ six==1.16.0
     # via python-dateutil
 sklearn==0.0
     # via dadpy (setup.py)
-smart-open==5.2.1
+smart-open==6.1.0
     # via gensim
 threadpoolctl==3.1.0
     # via scikit-learn
