@@ -102,17 +102,18 @@ sphinxcontrib-serializinghtml==1.1.5
 toml==0.10.2
     # via
     #   coverage
-    #   pytest
     #   tox
 tomli==1.2.1
-    # via setuptools-scm
+    # via
+    #   pytest
+    #   setuptools-scm
 tox==3.24.5
     # via -r dev-requirements.in
 urllib3==1.26.6
     # via requests
 virtualenv==20.7.2
     # via tox
-wheel==0.37.1
+wheel==0.38.4
     # via -r dev-requirements.in
 
 # The following packages are considered to be unsafe in a requirements file:
